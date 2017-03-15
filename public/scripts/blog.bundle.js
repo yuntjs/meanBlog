@@ -1,4 +1,9 @@
-var angular = require('angular');
+webpackJsonp([0],{
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+var angular = __webpack_require__(0);
 var myApp = angular.module('blogApp', ['ui.router']);
 
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
@@ -10,3 +15,8 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
       templateUrl: 'templates/home.html'
     })
 }]);
+
+
+/***/ })
+
+},[2]);
