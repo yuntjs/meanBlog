@@ -34,7 +34,6 @@ router.get("/", function(req, res, next){
                   if(err) return next(err);
                   res.json(questions);
                 });
-  res.json({response: "You sent me a GET request"});
 });
 
 router.post("/", function(req, res, next){

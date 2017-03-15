@@ -21,8 +21,8 @@ var AnswerSchema = new Schema({
 AnswerSchema.method("update", function(updates, callback) {
   Object.assign(this, updates, {updatedAt: new Date()});
   this.parent().save(callback);
-  
 });
+
 AnswerSchema.method("vote", function(vote, callback) {
   if(vote == "up"){
     this.votes += 1;
@@ -45,3 +45,6 @@ QuestionSchema.pre("save",function(next){
 
 var Question = mongoose.model("Question", QuestionSchema);
 var Answer = mongoose.model("Answer", AnswerSchema);
+
+
+module.exports.Question = Question;
