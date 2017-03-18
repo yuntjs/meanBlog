@@ -1,6 +1,9 @@
 var angular = require('angular');
 var myApp = angular.module('blogApp', ['ui.router']);
 
+require('./scripts/services');
+require('./scripts/controllers');
+
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/');
 
@@ -9,4 +12,14 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
       url: '/',
       templateUrl: 'templates/home.html'
     })
-}]);
+    .state('questions',{
+      url: '/questions',
+      templateUrl: 'templates/questions.html',
+      controller: 'qCtrl'
+    })
+    .state('question',{
+      url: '/questions/:id',
+      templateUrl: 'templates/question.html',
+      controller: 'questionCtrl'
+    });
+  }]);
