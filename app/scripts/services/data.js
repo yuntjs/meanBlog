@@ -10,6 +10,10 @@ function DataService($http, $q){
     $http.get('/api/questions/' + id).then(cb);
   }
 
+  this.addQuestion = function(question, cb){
+    $http.post('/api/questions', question).then(cb);
+  }
+
 }
 
 module.exports = DataService;

@@ -40,6 +40,7 @@ function qCtrl($scope, $log, dataService){
 
   $scope.changeDisplay = function(){
     if($scope.display){
+      $scope.question = null;      
       $scope.displayLabel = "Cancel post";
     } else {
       $scope.displayLabel = "Post a question";
@@ -47,7 +48,11 @@ function qCtrl($scope, $log, dataService){
   }
 
   $scope.submitQuestion = function(newTitle, newQuestion){
-    console.log("title: "+ newTitle+"; question: " +newQuestion);
+    var question = {title: newTitle, text: newQuestion};
+    dataService.addQuestion(question, function(response){
+      $scope.questions.unshift(response.data);
+    })
+
     $scope.display = false;
     $scope.changeDisplay();
     $scope.question = null;
@@ -90,6 +95,10 @@ function DataService($http, $q){
 
   this.getQuestion = function(id,cb){
     $http.get('/api/questions/' + id).then(cb);
+  }
+
+  this.addQuestion = function(question, cb){
+    $http.post('/api/questions', question).then(cb);
   }
 
 }
